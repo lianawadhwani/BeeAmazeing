@@ -1,3 +1,5 @@
+class Bee{
+
 var speed;
 var posX;
 var posY;
@@ -106,4 +108,5 @@ function checkHitGoal()
       Game.win();g
     }
   }
+}
 }
