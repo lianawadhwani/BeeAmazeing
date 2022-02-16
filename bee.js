@@ -20,11 +20,11 @@ this.onkeydown = function (event) {
           break;
        case 38:
           console.log("Up key is pressed.");
-          changeDirection(0);
+          changeDirection(1);
           break;
        case 39:
           console.log("Right key is pressed.");
-          changeDirection(1);
+          changeDirection(0);
           break;
        case 40:
           console.log("Down key is pressed.");
