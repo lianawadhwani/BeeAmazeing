@@ -2,37 +2,30 @@ var speed;
 var posX;
 var posY;
 var size;
-var direction; 
+var direction;
 
-
-var ctx = document.getElementById('bee').getContext('2d');// need to have drawing in html first
-
-function move()
-{
-  if (this.direction==0)
-  {
-    posX ++;
-    ctx.translate(posX,posY);//set exact speed later
-  }
-  if (this.direction==2)
-  {
-    posX --;
-    ctx.translate(posX,posY);
-  }
-  if (this.direction==3)
-  {
-    posY --;
-    ctx.translate(posX,posY);
-  }
-  if (this.direction==1)
-  {
-    posY ++;
-    ctx.translate(posX,posY);
-  }
-
+function changeDirection(int direction) {
+  this.direction = direction;
 }
 
-while(GameActive == true)
-{
-  this.move();
-}
+//arrow key html listener
+this.onkeydown = function (event) {
+    switch (event.keyCode) {
+       case 37:
+          console.log("Left key is pressed.");
+          changeDirection(2);
+          break;
+       case 38:
+          console.log("Up key is pressed.");
+          changeDirection(1);
+          break;
+       case 39:
+          console.log("Right key is pressed.");
+          changeDirection(0);
+          break;
+       case 40:
+          console.log("Down key is pressed.");
+          changeDirection(3);
+          break;
+    }
+ };
