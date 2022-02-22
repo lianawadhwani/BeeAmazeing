@@ -109,4 +109,4 @@ function checkHitGoal()
     }
   }
 }
-}
+
