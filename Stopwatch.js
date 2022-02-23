@@ -76,3 +76,9 @@ runFor(s){
     this.update();
   }
 }
+
+class StopWatchTester() impliments Stopwatch(){
+  StopWatch watch = new Stopwatch();
+  watch.runFor(10);
+  
+}
