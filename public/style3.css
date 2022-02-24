@@ -12,6 +12,9 @@ position: absolute;
 top: 200px;
 left: 500px;
 
+}
 
-
+#bee{
+  position: relative;
+  cursor: pointer; 
 }
