@@ -1,6 +1,33 @@
-var direction = 3;//use this to test
+var size;
+var speed;
+var direction;
 var posX = bee.style.left;
 varPosY = bee.style.top;
+function changeDirection(int direction) {
+  this.direction = direction;
+}
+
+//arrow key html listener
+this.onkeydown = function (event) {
+    switch (event.keyCode) {
+       case 37:
+          console.log("Left key is pressed.");
+          changeDirection(2);
+          break;
+       case 38:
+          console.log("Up key is pressed.");
+          changeDirection(1);
+          break;
+       case 39:
+          console.log("Right key is pressed.");
+          changeDirection(0);
+          break;
+       case 40:
+          console.log("Down key is pressed.");
+          changeDirection(3);
+          break;
+    }
+ };
 
   bee.onclick = function() {//function starts when bee icon is clicked
     let start = Date.now();
