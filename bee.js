@@ -2,7 +2,7 @@ var direction = 3;//use this to test
 var posX = bee.style.left;
 varPosY = bee.style.top;
 
-  bee.onclick = function() {
+  bee.onclick = function() {//function starts when bee icon is clicked
     let start = Date.now();
 
     let toMove = setInterval(function() {
