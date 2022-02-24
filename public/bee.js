@@ -2,7 +2,7 @@ var size;
 var speed;
 var direction;
 var posX = bee.style.left;
-varPosY = bee.style.top;
+var PosY = bee.style.top;
 function changeDirection(int direction) {
   this.direction = direction;
 }
