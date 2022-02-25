@@ -43,7 +43,7 @@ class CollisionChecker {
 
   // Checks if its a wall (assumed RGB values are 255,255,255)
   isWall(pixelData) {
-    if (pixelData[0] == '0' && pixelData[1] == '0' && pixelData[2] == '0' && pixelData[3] == '0') {
+    if (pixelData[0] == '0' && pixelData[1] == '0' && pixelData[2] == '0' && pixelData[3] == '255') {
       console.log('hitting wall');
       return true;
     }
