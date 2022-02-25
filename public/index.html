@@ -8,9 +8,22 @@
 
 <body>
 
-<div class=maze1>
-<img src="correctMaze.jpeg" alt="level1" width="700" height= "700">
-</div>
+<img id="maze2" width="500" height="0" src="maze2black.png" style="opacity: 0">
+<canvas id="maze" width="500" height="500" style="align:center"></canvas>
+
+<script>
+window.onload = function() {
+  var c = document.getElementById("maze");
+  var ctx = c.getContext("2d");
+  var img = document.getElementById("maze2");
+  ctx.drawImage(img, 10, 10);
+};
+</script>
+
+
+
+
+
 
 
 <div class=bee>
@@ -21,11 +34,13 @@
 <img src="bee.jpeg" alt="bee" width= "50px" height="50px">
 
 
-
-
-
 <script src = "script.js"></script>
 
+<div class=enemy>
+<script enemy = "Enemy.js"></script>
+<script timer= "Timer.js"></script>
+<img src="enemySprite.png" alt="en" width= "50px" height="50px">
+</div>
 
 </body>
 
