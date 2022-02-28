@@ -1,8 +1,11 @@
 var size;
 var speed;
-var direction;
+var direction = 0;
 var posX = bee.style.left;
 var PosY = bee.style.top;
+var x = 0;
+var y = 0;
+
 function changeDirection(direction) {
   this.direction = direction;
 }
@@ -29,33 +32,41 @@ this.onkeydown = function (event) {
     }
  };
 
-  bee.onclick = function() {//function starts when bee icon is clicked
-    let start = Date.now();
+bee.onclick = function() {//function starts when bee icon is clicked
 
     let toMove = setInterval(function() {
-      let timePassed = Date.now() - start;
+      console.log(this.direction);
       if(this.direction==0)
       {
-      bee.style.left = timePassed / 100 + 'px';
+       x++;
+       bee.style.left = x + 'px';
+       console.log(bee.style.left);
       }
       if(this.direction==2)
       {
-      bee.style.left = -timePassed / 100 + 'px';
+      x--;
+      bee.style.left = x + 'px';
+
       }
       if(this.direction==1)
       {
-      bee.style.top = -timePassed / 100 + 'px';
+        y--;
+        bee.style.top = y + 'px';
+
       }
       if(this.direction==3)
       {
-      bee.style.top = timePassed / 100 + 'px';
+        y++;
+        bee.style.top = y + 'px';
+
       }
 
-      console.log(bee.style.top);
+      // console.log(bee.style.top);
 
 
     }, 20);
   }
+
 
   //henlohiii
 
