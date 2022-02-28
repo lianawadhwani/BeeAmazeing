@@ -12,7 +12,7 @@ var x=.25;
 var y=20;
 var xstep=.25;
 var ystep=.25;
-/**
+
 window.requestAnimationFrame(function loop(){
 context.clearRect(0,0, canvas.width, canvas.height);
 if (x>200 || y>200 || x<0 || y<0){
@@ -34,5 +34,5 @@ context.fillStyle="blue";
 context.fillRect(0,0,100, 100);
 context.restore();
 window.requestAnimationFrame(loop);
-*/
+
 });

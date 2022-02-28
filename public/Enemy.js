@@ -3,10 +3,11 @@ class Enemy{
     this.direction = direction;// direction 1 is up direction 2 is down direction 3 is to the right direction 4 is to the left
     this.id = id;
     this.speed = speed;
+    this.isPlaying = true;
   }
   move(){
     var enemy = document.getElementById(this.id);
-    while(game.play()){// checks whether game is running
+    while(this.play()){// checks whether game is running
       if(this.hitWall()){
         this.changeDirection();
       }
@@ -23,6 +24,12 @@ class Enemy{
         enemy.translate(speed*-1, 0);
       }
     }
+  }
+  play(){
+    int = setTimeout(this.makeFalse(), 1000);
+  }
+  makeFalse(){
+    this.isPlaying = false;
   }
   changeDirection(){
     if (this.direction<=2){
