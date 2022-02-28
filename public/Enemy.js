@@ -1,9 +1,22 @@
 class Enemy{
-  constructor(direction, id, speed){
+  constructor(direction, id, speed, posx, posy){
     this.direction = direction;// direction 1 is up direction 2 is down direction 3 is to the right direction 4 is to the left
     this.id = id;
     this.speed = speed;
     this.isPlaying = true;
+    this.x = posx;
+    this.y = posy;
+  }
+
+  loadEnemy(){
+    window.requestAnimationFrame(function loop(){
+      var enemy = document.getElementById("enemySprite");
+      ctx.drawImage(enemy,posx, posy,30,40);
+      ctx.restore();
+      context.translate(0,10);
+      window.requestAnimationFrame(loop);
+      ctx.restore();
+      context.save();
   }
   move(){
     var enemy = document.getElementById(this.id);
