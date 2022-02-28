@@ -32,7 +32,6 @@ this.onkeydown = function (event) {
  };
 
 bee.onclick = function() {//function starts when bee icon is clicked
-
     toMove = setInterval(function() {
   
       if(this.direction==0)
@@ -78,7 +77,6 @@ function resetBeeToStart ()
 
 }
 
-  //henlohiii
 
   function checkHitWall ()
   {
