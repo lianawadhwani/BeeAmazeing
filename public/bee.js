@@ -3,47 +3,47 @@ var speed;
 var direction = 0;
 var posX = bee.style.left;
 var PosY = bee.style.top;
-var x = 0;
-var y = 0;
+var xinit = 0;
+var yinit = 0;
+var x = xinit;
+var y = yinit;
+var toMove;
 
 function changeDirection(direction) {
   this.direction = direction;
 }
 
-//arrow key html listener
+
 this.onkeydown = function (event) {
     switch (event.keyCode) {
        case 37:
-          console.log("Left key is pressed.");
           changeDirection(2);
           break;
        case 38:
-          console.log("Up key is pressed.");
           changeDirection(1);
           break;
        case 39:
-          console.log("Right key is pressed.");
           changeDirection(0);
           break;
        case 40:
-          console.log("Down key is pressed.");
           changeDirection(3);
           break;
     }
  };
 
 bee.onclick = function() {//function starts when bee icon is clicked
-
-    let toMove = setInterval(function() {
-      console.log(this.direction);
+    toMove = setInterval(function() {
+  
       if(this.direction==0)
       {
        x++;
+       x++;
        bee.style.left = x + 'px';
-       console.log(bee.style.left);
+       // console.log(bee.style.left);
       }
       if(this.direction==2)
       {
+      x--;
       x--;
       bee.style.left = x + 'px';
 
@@ -51,11 +51,13 @@ bee.onclick = function() {//function starts when bee icon is clicked
       if(this.direction==1)
       {
         y--;
+        y--;
         bee.style.top = y + 'px';
 
       }
       if(this.direction==3)
       {
+        y++;
         y++;
         bee.style.top = y + 'px';
 
@@ -67,8 +69,14 @@ bee.onclick = function() {//function starts when bee icon is clicked
     }, 20);
   }
 
+function resetBeeToStart ()
+{
+  clearInterval(toMove);
+  bee.style.left = xinit + 'px';
+  bee.style.top = yinit + 'px';
 
-  //henlohiii
+}
+
 
   function checkHitWall ()
   {
