@@ -62,7 +62,7 @@ class CollisionChecker {
     var ctx = this.canvas.getContext("2d");
     var ctx = this.canvas.getContext("2d");
     var myImg = document.getElementById("img");
-    ctx.drawImage(myImg, 0, 0, 1000, 1000);
+    ctx.drawImage(myImg, 0, 0, 390, 390);
   }
 
   _test_logTestData(pixelData) {
