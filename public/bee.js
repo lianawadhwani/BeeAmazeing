@@ -1,6 +1,6 @@
 var size;
 var speed;
-var direction;
+var direction = 0;
 var posX = bee.style.left;
 var PosY = bee.style.top;
 var x = 0;
