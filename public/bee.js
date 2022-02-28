@@ -1,61 +1,82 @@
 var size;
 var speed;
-var direction;
+var direction = 0;
 var posX = bee.style.left;
 var PosY = bee.style.top;
+var xinit = 0;
+var yinit = 0;
+var x = xinit;
+var y = yinit;
+var toMove;
+
 function changeDirection(direction) {
   this.direction = direction;
 }
 
-//arrow key html listener
+
 this.onkeydown = function (event) {
     switch (event.keyCode) {
        case 37:
-          console.log("Left key is pressed.");
           changeDirection(2);
           break;
        case 38:
-          console.log("Up key is pressed.");
           changeDirection(1);
           break;
        case 39:
-          console.log("Right key is pressed.");
           changeDirection(0);
           break;
        case 40:
-          console.log("Down key is pressed.");
           changeDirection(3);
           break;
     }
  };
 
-  bee.onclick = function() {//function starts when bee icon is clicked
-    let start = Date.now();
+bee.onclick = function() {//function starts when bee icon is clicked
 
-    let toMove = setInterval(function() {
-      let timePassed = Date.now() - start;
+    toMove = setInterval(function() {
+  
       if(this.direction==0)
       {
-      bee.style.left = timePassed / 100 + 'px';
+       x++;
+       x++;
+       bee.style.left = x + 'px';
+       // console.log(bee.style.left);
       }
       if(this.direction==2)
       {
-      bee.style.left = -timePassed / 100 + 'px';
+      x--;
+      x--;
+      bee.style.left = x + 'px';
+
       }
       if(this.direction==1)
       {
-      bee.style.top = -timePassed / 100 + 'px';
+        y--;
+        y--;
+        bee.style.top = y + 'px';
+
       }
       if(this.direction==3)
       {
-      bee.style.top = timePassed / 100 + 'px';
+        y++;
+        y++;
+        bee.style.top = y + 'px';
+
       }
 
-      console.log(bee.style.top);
+      // console.log(bee.style.top);
 
 
     }, 20);
   }
+
+function resetBeeToStart ()
+{
+  clearInterval(toMove);
+  bee.style.left = xinit + 'px';
+  bee.style.top = yinit + 'px';
+
+}
 
   //henlohiii
 
