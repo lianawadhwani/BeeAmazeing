@@ -3,15 +3,18 @@ h1{
   text-align: center;
 }
 
+canvas{
+  border: 2px dotted black;
+}
 
 .maze1 img{
 position: absolute;
 top: 200px;
 left: 500px;
 
-canvas#viewport { border: 1px solid white; width: 900px; }
-
-.clearImage{
-  opacity: 0
 }
+
+#bee{
+  position: relative;
+  cursor: pointer;
 }

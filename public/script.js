@@ -1,4 +1,5 @@
 
+console.log("hello"); 
 var bee1 = document.getElementById('bee');
 var bee2 = document.getElementById('bee2');
 

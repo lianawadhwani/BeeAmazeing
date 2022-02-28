@@ -8,55 +8,22 @@
 
 <body>
 
-<img id="maze2" width="500" height="0" src="maze2black.png" style="opacity: 0">
-<canvas id="maze" width="500" height="500" style="align:center"></canvas>
-<img id = "enemySprite" src="enemySprite.png" alt="en" width= "50px" height="50px">
-
-<script>
-window.onload = function() {
-  var c = document.getElementById("maze");
-  var ctx = c.getContext("2d");
-  var img = document.getElementById("maze2");
-  ctx.drawImage(img, 10, 10);
-  var enemy = document.getElementById("enemySprite");
-  ctx.drawImage(enemy,125,40,30,40);
-  ctx.restore();
-
-};
-window.requestAnimationFrame(function loop(){
-  var enemy = document.getElementById("enemySprite");
-  ctx.drawImage(enemy,125,40,30,40);
-  ctx.restore();
-  context.translate(0,10);
-  window.requestAnimationFrame(loop);
-  ctx.restore();
-  context.save();
-
-});
-</script>
+     <canvas id="game" width=1000px height=1000px></canvas>
+     <script type="module" src="./collisionChecker.js"></script>
+     <!--   <script type="module" src="./bee.js"></script> -->
 
 
-
-
-
-
-
-<div class=bee>
-<img src="bee.jpeg" alt="bee" width= "50px" height="50px">
+<div class=maze1>
+<img id= "img" src="maze1black.jpeg" style="display: none;" stylealt="level1" width="700" height= "700">
 </div>
 
-<div class=bee2>
-<img src="bee.jpeg" alt="bee" width= "50px" height="50px">
 
+<img id= "bee" src="bee.jpeg" alt="bee" width= "100px" height="100px">
 
 <script src = "script.js"></script>
 <script src="bee.js"></script>
 
-<div class=enemy>
-<script enemy = "Enemy.js"></script>
-<script timer= "Timer.js"></script>
-<img id = "enemySprite" src="enemySprite.png" alt="en" width= "50px" height="50px">
-</div>
+<script src = "collisionChecker.js"></script>
 
 </body>
 
