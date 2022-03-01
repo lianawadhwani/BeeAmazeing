@@ -1,55 +1,115 @@
-class Enemy{
-  constructor(direction, id, speed, posx, posy){
-    this.direction = direction;// direction 1 is up direction 2 is down direction 3 is to the right direction 4 is to the left
-    this.id = id;
-    this.speed = speed;
-    this.isPlaying = true;
-    this.x = posx;
-    this.y = posy;
+var size;
+var speed;
+var direction = 0;
+var posX = enemy.style.left;
+var PosY = enemy.style.top;
+var x = 0;
+var y = 0;
+
+function changeDirection(direction) {
+  this.direction = direction;
+}
+
+//arrow key html listener
+this.onkeydown = function (event) {
+    switch (event.keyCode) {
+       case 37:
+          console.log("Left key is pressed.");
+          changeDirection(2);
+          break;
+       case 38:
+          console.log("Up key is pressed.");
+          changeDirection(1);
+          break;
+       case 39:
+          console.log("Right key is pressed.");
+          changeDirection(0);
+          break;
+       case 40:
+          console.log("Down key is pressed.");
+          changeDirection(3);
+          break;
+    }
+ };
+
+bee.onclick = function() {//function starts when bee icon is clicked
+
+    let toMove = setInterval(function() {
+      console.log(this.direction);
+      if(this.direction==0)
+      {
+       x++;
+       bee.style.left = x + 'px';
+       console.log(bee.style.left);
+      }
+      if(this.direction==2)
+      {
+      x--;
+      bee.style.left = x + 'px';
+
+      }
+      if(this.direction==1)
+      {
+        y--;
+        bee.style.top = y + 'px';
+
+      }
+      if(this.direction==3)
+      {
+        y++;
+        bee.style.top = y + 'px';
+
+      }
+
+      // console.log(bee.style.top);
+
+
+    }, 20);
   }
 
-  loadEnemy(){
-    window.requestAnimationFrame(function loop(){
-      var enemy = document.getElementById("enemySprite");
-      ctx.drawImage(enemy,posx, posy,30,40);
-      ctx.restore();
-      context.translate(0,10);
-      window.requestAnimationFrame(loop);
-      ctx.restore();
-      context.save();
+
+  //henlohiii
+
+  function checkHitWall ()
+  {
+    if(hitWall())//method not yet made-- some additions needed to cc class (use pixel type to make functions check hit wall, hit pot, etc.)
+    {
+      Game.decreaseTime();//these objects to be instantiated in game class
+    }
+
   }
-  move(){
-    var enemy = document.getElementById(this.id);
-    while(this.play()){// checks whether game is running
-      if(this.hitWall()){
-        this.changeDirection();
+
+  function checkHitPot ()
+  {
+    if(hitPot())//method not yet made
+    {
+      HoneyPot.collect(hitPot());//these objects to be instantiated in game class
+    }
+  }
+
+  function checkHitEnemy()//method not yet made
+  {
+    if(hitEnemy())
+    {
+      Bee.die()//these objects to be instantiated in game class
+    }
+  }
+
+  function die()
+  {
+    Game.gameOver();//method not yet made
+  }
+
+  function checkHitGoal()//methods not yet made/testable
+  {
+    if (posX == Goal.posX && posY == Goal.posY);
+    {
+      if (Game.currentLevel <= 4)
+      {
+        Game.nextLevel();
       }
-      if (direction == 1){
-        enemy.translate(0, speed);
-      }
-      if (direction == 2){
-        enemy.translate(0, speed*-1);
-      }
-      if (direction == 3){
-        enemy.translate(speed, 0);
-      }
-      if (direction == 4){
-        enemy.translate(speed*-1, 0);
+      else {
+        Game.win();
       }
     }
   }
-  play(){
-    int = setTimeout(this.makeFalse(), 1000);
-  }
-  makeFalse(){
-    this.isPlaying = false;
-  }
-  changeDirection(){
-    if (this.direction<=2){
-      this.direction = this.direction+2;
-    }
-    else(){
-      this.direction = this.direction-2;
-    }
-  }
-}
