@@ -1,10 +1,11 @@
+
 var size;
 var speed;
 var direction = 0;
 var posX = bee.style.left;
 var PosY = bee.style.top;
-var xinit = 0;
-var yinit = 0;
+var xinit = 50;
+var yinit = 50;
 var x = xinit;
 var y = yinit;
 var toMove;
@@ -33,7 +34,7 @@ this.onkeydown = function (event) {
 
 bee.onclick = function() {//function starts when bee icon is clicked
     toMove = setInterval(function() {
-  
+
       if(this.direction==0)
       {
        x++;
@@ -120,4 +121,13 @@ function resetBeeToStart ()
         Game.win();
       }
     }
+  }
+
+
+  function test(){
+    var canvas = document.getElementById('game');
+    var ctx = this.canvas.getContext("2d");
+    var ctx = this.canvas.getContext("2d");
+    var bee = document.getElementById("bee.jpeg");
+    ctx.drawImage(bee,xinit,yinit, 50, 50);
   }

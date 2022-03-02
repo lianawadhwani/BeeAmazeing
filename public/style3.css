@@ -16,5 +16,10 @@ left: 500px;
 
 #bee{
   position: relative;
-  cursor: pointer; 
+  cursor: pointer;
+}
+
+#instruction{
+  background-color: yellow;
+
 }
