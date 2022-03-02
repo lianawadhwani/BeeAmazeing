@@ -80,5 +80,5 @@ runFor(s){
 class StopWatchTester() impliments Stopwatch(){
   StopWatch watch = new Stopwatch();
   watch.runFor(10);
-  
+
 }
