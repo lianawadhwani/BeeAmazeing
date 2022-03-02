@@ -1,17 +1,22 @@
-var ctx = document.getElementById('honeypot').getContext('2d');
+//var ctx = document.getElementById('honeypot').getContext('2d');
 
 class Honeypot{
   let onScreenTime;
   let posX;
   let posY;
-  let potNumber;
-  let visible = false;
+  //let potNumber;
+  let visible = true;
 
+  public Honeypot(posX, posY){
+    this.posX = posX;
+    this.posY = posY;
+  }
 
-  let honeypot = document.getElementById('honeypot');
+//  let honeypot = document.getElementById('honeypot');
 
   function setOnScreenTime(){
-    onScreenTime = Math.floor(Math.random() * 20) + 5;
+    let randTime = Math.floor(Math.random() * 20) + 5;
+    onScreenTime = randtime* 1000;
   }
 
   function getOnScreenTime(){
@@ -35,32 +40,40 @@ class Honeypot{
 
 
   function collect(gameTimer){
-    //change style of honeypot element to be invisible
+    //call if pot is touched
     gameTimer += 5;
+    visible = false;
   }
-//got rid of the dissapear method
 
-  function runPotTime() {
-    Stopwatch watch = new Stopwatch();
+  function runPotTime(posX, posY) {
+    console.log("RUNPOTRUNPOT")
     setOnScreenTime();
-    this.visible = true;
-    //change css of honeypot to be visible
-    watch.start();
-    watch.stopAt(this.getOnScreenTime());
-    this.visible = false;
-    //this should be called right after a honeypot is drawn
+    potImg = document.getElementById("honeypot");
 
+    Stopwatch watch = new Stopwatch();
+    watch.start();
+    let drawing = setInterval(drawPot(gameCtx, posX, posY), 500);
+
+    if(visible == false){
+      clearInterval(drawing);
+    }
+
+    watch.stopAt(this.getOnScreenTime());
+
+    clearInterval(drawing);
+  }
+
+  function drawPot(ctx, posX, posY){
+    let gameCtx = document.getElementById('game');
+    gameCtx.drawImage('honeypot.png', posX, posY);
 
   }
 
 }
 
-//draw honeypot
 
-let img = document.getElementById("idname");
-ctx.drawImage("img of honeypot change later", posX, posY);
-this.runPotTime();
+const checker = new CollisionChecker(gameCanvasElement);
 
-while (this.visible = false){
-  //change css of honeypot
-}
+//var img = document.createElement("honeypot.png");
+//img.setAttribute(id,‘honeypot’);
+//this.runPotTime();

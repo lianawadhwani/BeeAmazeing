@@ -1,4 +1,4 @@
-class CollisionChecker {
+class HoneypotCollisionChecker {
   constructor(canvasElement) {
   this.canvas = beeCanvasElement;
 
@@ -10,7 +10,7 @@ class CollisionChecker {
 
       this.typeOfGameElement = {
         nothing : "nothing",
-        wall : "wall"
+        honeypot : "honeypot"
       }
   }
 
@@ -34,17 +34,17 @@ class CollisionChecker {
 
 
     if (pixelData) {
-      // Check if wall
-      if (this.isWall(pixelData)) {
-        return this.typeOfGameElement.wall;
+      // Check if honeypot
+      if (this.isHoneypot(pixelData)) {
+        return this.typeOfGameElement.honeypot;
       }
     }
   }
 
   // Checks if its a wall (assumed RGB values are 255,255,255)
-  isWall(pixelData) {
-    if (pixelData[0] == '0' && pixelData[1] == '0' && pixelData[2] == '0' && pixelData[3] == '255') {
-      console.log('hitting wall');
+  isHoneypot(pixelData) {
+    if (pixelData[0] == '253' && pixelData[1] == '126' && pixelData[2] == '8') {
+      console.log('hitting honeypot');
       return true;
     }
     return false;
@@ -70,7 +70,7 @@ class CollisionChecker {
       console.log('R: ' + pixelData[0]);
       console.log('G: ' + pixelData[1]);
       console.log('B: ' + pixelData[2]);
-      console.log('A: ' + pixelData[3]);
+    //  console.log('A: ' + pixelData[3]);
     }
   }
 
@@ -78,3 +78,5 @@ class CollisionChecker {
 
 let gameCanvasElement = document.getElementById('game');
 const cc = new CollisionChecker(beeCanvasElement);
+
+export{CollisionChecker};
