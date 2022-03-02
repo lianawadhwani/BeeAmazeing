@@ -18,3 +18,8 @@ left: 500px;
   position: relative;
   cursor: pointer;
 }
+
+#instruction{
+  background-color: yellow;
+
+}
