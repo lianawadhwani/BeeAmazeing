@@ -3,7 +3,7 @@ class CollisionChecker {
   this.canvas = beeCanvasElement;
 
       // set this to true to test everything
-      this._test = true;
+      this._test = false;
       if (this._test) {
         this._test_logMouseMovement();
       }
@@ -59,10 +59,6 @@ class CollisionChecker {
     this.canvas.addEventListener('mousemove', e => {
       self.checkPixelType(e.offsetX, e.offsetY);
     });
-    var ctx = this.canvas.getContext("2d");
-    var ctx = this.canvas.getContext("2d");
-    var myImg = document.getElementById("img");
-    ctx.drawImage(myImg, 0, 0, 390, 390);
   }
 
   _test_logTestData(pixelData) {
