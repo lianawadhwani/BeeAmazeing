@@ -3,7 +3,7 @@ class Stopwatch {
   constructor(/**id,*/ delay=100) { //Delay in ms
     this.state = "paused";
     this.delay = delay;
-    this.display = document.getElementById(id);
+    this.display = document.getElementById('game');
     this.value = 0;
   }
   // to desplay timer in website
@@ -76,9 +76,9 @@ runFor(s){
     this.update();
   }
 }
-
-class StopWatchTester() impliments Stopwatch(){
+/*
+class StopWatchTester implements Stopwatch(){
   StopWatch watch = new Stopwatch();
   watch.runFor(10);
 
-}
+}*/

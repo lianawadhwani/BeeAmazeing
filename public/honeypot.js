@@ -1,78 +1,83 @@
 //var ctx = document.getElementById('honeypot').getContext('2d');
 
-class Honeypot{
-  let onScreenTime;
-  let posX;
-  let posY;
+class Honeypot {
   //let potNumber;
-  let visible = true;
 
-  public Honeypot(posX, posY){
+  constructor(posX, posY) {
     this.posX = posX;
     this.posY = posY;
+    this.onScreenTime = 0;
+    this.visible = true;
+    this.gameCanvas = document.getElementById("game");
+    this.gameCtx = this.gameCanvas.getContext("2d");
+    this.potImg = new Image();
+    this.potImg.src = "honeypot.png";
+
   }
 
-//  let honeypot = document.getElementById('honeypot');
+  //  let honeypot = document.getElementById('honeypot');
 
-  function setOnScreenTime(){
+  setOnScreenTime() {
     let randTime = Math.floor(Math.random() * 20) + 5;
-    onScreenTime = randtime* 1000;
+    this.onScreenTime = randTime * 1000;
   }
 
-  function getOnScreenTime(){
-    return onScreenTime;
+  getOnScreenTime() {
+    return this.onScreenTime;
   }
 
-  function setPosX(){
-    posX = x;
+  setPosX(x) {
+    this.posX = x;
   }
 
-  function getPosX(){
-    return posX;
+  getPosX() {
+    return this.posX;
   }
-  function setPosY(y){
-    posY = y;
-  }
-
-  function getPosX(){
-    return posY;
+  setPosY(y) {
+    this.posY = y;
   }
 
+  getPosY() {
+    return this.posY;
+  }
 
-  function collect(gameTimer){
+
+  collect(gameTimer) {
     //call if pot is touched
     gameTimer += 5;
-    visible = false;
+    this.visible = false;
   }
 
-  function runPotTime(posX, posY) {
+  drawPot(ctx, posX, posY) {
+
+    ctx.drawImage(this.potImg, posX, posY, 50,50);
+
+  }
+
+  runPotTime() {
     console.log("RUNPOTRUNPOT")
-    setOnScreenTime();
-    potImg = document.getElementById("honeypot");
+    this.setOnScreenTime();
+    let watch = new Stopwatch();
+    //watch.start();
+    //let drawing = setInterval(this.drawPot(this.gameCtx, this.posX, this.posY), 1000 / 500);
+    this.drawPot(this.gameCtx, this.posX, this.posY);
+    //if (this.visible == false) {
+    //  clearInterval(drawing);
+    //  }
 
-    Stopwatch watch = new Stopwatch();
-    watch.start();
-    let drawing = setInterval(drawPot(gameCtx, posX, posY), 500);
+  //  watch.stopAt(this.getOnScreenTime());
 
-    if(visible == false){
-      clearInterval(drawing);
-    }
-
-    watch.stopAt(this.getOnScreenTime());
-
-    clearInterval(drawing);
-  }
-
-  function drawPot(ctx, posX, posY){
-    let gameCtx = document.getElementById('game');
-    gameCtx.drawImage('honeypot.png', posX, posY);
+  //  if(watch.state == "paused"){
+  //    clearInterval(drawing);
+  //  }
 
   }
+
 
 }
 
 
-const checker = new CollisionChecker(gameCanvasElement);
+//const checker = new CollisionChecker(gameCanvasElement);
 
 //var img = document.createElement("honeypot.png");
 //img.setAttribute(id,‘honeypot’);
