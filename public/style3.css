@@ -21,8 +21,10 @@ left: 500px;
 
 #postest{
   position: absolute;
-  top: 214px;
-  left: 288px;
+  top: 345px;
+  left: 55px;
+  height: 5px;
+width: 5px;
 }
 
 #instruction{
