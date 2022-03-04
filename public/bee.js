@@ -122,12 +122,3 @@ function resetBeeToStart ()
       }
     }
   }
-
-
-  function test(){
-    var canvas = document.getElementById('game');
-    var ctx = this.canvas.getContext("2d");
-    var ctx = this.canvas.getContext("2d");
-    var bee = document.getElementById("bee.jpeg");
-    ctx.drawImage(bee,xinit,yinit, 50, 50);
-  }
