@@ -3,11 +3,13 @@ var speed;
 var direction = 0;
 var posX = bee.style.left;
 var PosY = bee.style.top;
-var x = 0;
-var y = 0;
+var xinit = 50;
+var yinit = 50;
+var x = xinit;
+var y = yinit;
+var toMove;
 let beeCanvasElement = document.getElementById('game');
-const cc = new CollisionChecker(beeCanvasElement);
-
+var cc = new CollisionChecker(beeCanvasElement);
 
 function changeDirection(direction) {
   this.direction = direction;
@@ -36,14 +38,16 @@ this.onkeydown = function (event) {
  };
 
 bee.onclick = function() {//function starts when bee icon is clicked
-
-    let toMove = setInterval(function() {
-      //console.log(this.direction);
-      if (cc.checkPixelType(x, y)=="wall")
+    toMove = setInterval(function() {
+      var rect = bee.getBoundingClientRect();
+      if(cc.checkPixelType(rect.left, rect.top) == "wall")
       {
-        console.log("HITS WALLLLLL");
+        console.log("COLLISION! at "+rect.left+", "+rect.top);
       }
-
+      else {
+          //console.log("position:"+rect.left+", "+rect.top);
+      }
+      //console.log("position:"+rect.left+", "+rect.top);
 
       if(this.direction==0)
       {

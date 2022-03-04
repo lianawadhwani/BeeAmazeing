@@ -16,5 +16,16 @@ left: 500px;
 
 #bee{
   position: relative;
-  cursor: pointer; 
+  cursor: pointer;
+}
+
+#postest{
+  position: absolute;
+  top: 214px;
+  left: 288px;
+}
+
+#instruction{
+  background-color: yellow;
+
 }
