@@ -1,9 +1,10 @@
 
+const bee2= document.getElementById('bee2');
 var size;
 var speed;
 var direction = 0;
 var posX = bee.style.left;
-var PosY = bee.style.top;
+var posY = bee.style.top;
 var xinit = 50;
 var yinit = 50;
 var x = xinit;
@@ -32,35 +33,35 @@ this.onkeydown = function (event) {
     }
  };
 
-bee.onclick = function() {//function starts when bee icon is clicked
+bee2.onclick = function() {//function starts when bee icon is clicked
     toMove = setInterval(function() {
 
       if(this.direction==0)
       {
        x++;
        x++;
-       bee.style.left = x + 'px';
+       bee2.style.left = x + 'px';
        // console.log(bee.style.left);
       }
       if(this.direction==2)
       {
       x--;
       x--;
-      bee.style.left = x + 'px';
+      bee2.style.left = x + 'px';
 
       }
       if(this.direction==1)
       {
         y--;
         y--;
-        bee.style.top = y + 'px';
+        bee2.style.top = y + 'px';
 
       }
       if(this.direction==3)
       {
         y++;
         y++;
-        bee.style.top = y + 'px';
+        bee2.style.top = y + 'px';
 
       }
 
@@ -73,8 +74,8 @@ bee.onclick = function() {//function starts when bee icon is clicked
 function resetBeeToStart ()
 {
   clearInterval(toMove);
-  bee.style.left = xinit + 'px';
-  bee.style.top = yinit + 'px';
+  bee2.style.left = xinit + 'px';
+  bee2.style.top = yinit + 'px';
 
 }
 
