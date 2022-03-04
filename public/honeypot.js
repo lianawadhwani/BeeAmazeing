@@ -48,30 +48,13 @@ class Honeypot {
     this.visible = false;
   }
 
-  drawPot(ctx, posX, posY) {
-
-    ctx.drawImage(this.potImg, posX, posY, 50,50);
-
+  drawPot() {
+    console.log("RUNPOTRUNPOT");
+    if(this.visible){
+      this.gameCtx.drawImage(this.potImg, this.posX, this.posY, 50,50);
+    }
   }
 
-  runPotTime() {
-    console.log("RUNPOTRUNPOT")
-    this.setOnScreenTime();
-    let watch = new Stopwatch();
-    //watch.start();
-    //let drawing = setInterval(this.drawPot(this.gameCtx, this.posX, this.posY), 1000 / 500);
-    this.drawPot(this.gameCtx, this.posX, this.posY);
-    //if (this.visible == false) {
-    //  clearInterval(drawing);
-    //  }
-
-  //  watch.stopAt(this.getOnScreenTime());
-
-  //  if(watch.state == "paused"){
-  //    clearInterval(drawing);
-  //  }
-
-  }
 
 
 }
