@@ -17,9 +17,12 @@ class Honeypot {
 
   //  let honeypot = document.getElementById('honeypot');
 
-  setOnScreenTime() {
+  randOnScreenTime() {
     let randTime = Math.floor(Math.random() * 20) + 5;
-    this.onScreenTime = randTime * 1000;
+    this.onScreenTime = randTime;
+  }
+  setOnScreenTime(time){
+    this.onScreenTime = time;
   }
 
   getOnScreenTime() {
@@ -39,6 +42,14 @@ class Honeypot {
 
   getPosY() {
     return this.posY;
+  }
+
+  setVisible(bool) {
+    this.visible = bool;
+  }
+
+  getVisible() {
+    return this.visible;
   }
 
 

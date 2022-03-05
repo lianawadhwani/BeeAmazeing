@@ -1,13 +1,12 @@
-//stopAt() which stopps the watch a certian time
-class Stopwatch {
-  constructor(/**id,*/ delay=100) { //Delay in ms
+class Timer {
+  constructor(startingMins, startingSeconds, delay=100) { //Delay in ms starting time in seconds
     this.state = "paused";
     this.delay = delay;
-    this.display = document.getElementById('game');
-    this.value = 0;
+    //this.display = document.getElementById(id);
+    this.value = startingMins *1000*60 + startingSeconds*1000;
+    this.startValue = startingMins *1000*60 + startingSeconds*1000;
   }
-  // to desplay timer in website
-/**
+
   formatTime(ms) {
     var hours   = Math.floor(ms / 3600000);
     var minutes = Math.floor((ms - (hours * 3600000)) / 60000);
@@ -19,13 +18,16 @@ class Stopwatch {
     if (seconds < 10) {seconds = "0"+seconds;}
     return hours+':'+minutes+':'+seconds+'.'+ds;
   }
-  */
-// to desplay timer in werbsite
-  update() {
+
+    update() {
     if (this.state=="running") {
-      this.value += this.delay;
+      this.value -= this.delay;
     }
-    this.display.innerHTML = this.formatTime(this.value);
+    if (this.value <= 0){
+      this.stop();
+    }
+  //  console.log(stopwatch.value);
+    //this.display.innerHTML = this.formatTime(this.value);
   }
 
   start() {
@@ -35,6 +37,8 @@ class Stopwatch {
         var t=this;
         this.interval = setInterval(function(){t.update();}, this.delay);
       }
+
+
     }
   }
 
@@ -47,38 +51,15 @@ class Stopwatch {
     }
        }
   }
-  // time in seconds
-runFor(s){
-  this.run();
-  this.stopAt(s);
-}
-// time in s
- stopAt(s){
-   while (this.state =="running"){
-     if (this.value >= s*1000){
-       this.stop();
-     }
-   }
- }
-// decrease time by 10 seconds
- decreasetime(){
-   this.value = this.value + 10*1000;
- }
-// adds time by specified time put it in seconds
- addtime(s){
-   his.value = this.value - s*1000;
 
- }
 
   reset() {
     this.stop();
-    this.value=0;
+    this.value= this.startValue;
     this.update();
   }
-}
-/*
-class StopWatchTester implements Stopwatch(){
-  StopWatch watch = new Stopwatch();
-  watch.runFor(10);
 
-}*/
+  changeStartTime(mins, secs){
+    this.startValue = mins*60*1000 +secs*1000;
+  }
+}
