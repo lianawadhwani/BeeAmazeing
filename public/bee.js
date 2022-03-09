@@ -40,10 +40,10 @@ this.onkeydown = function (event) {
 bee.onclick = function() {//function starts when bee icon is clicked
     toMove = setInterval(function() {
       var rect = bee.getBoundingClientRect();
-      console.log(rect.left, rect.top);
-      if(cc.checkPixelType(rect.left, rect.top) == "wall")
+      //console.log(rect.left, rect.top);
+      if(cc.checkPixelType((rect.left+20), (rect.top-24)) == "wall")
       {
-        console.log("COLLISION! at "+rect.left+", "+rect.top);
+        console.log("COLLISION! at "+(rect.left+20)+", "+(rect.top-24));
       }
       else {
           //console.log("position:"+rect.left+", "+rect.top);
