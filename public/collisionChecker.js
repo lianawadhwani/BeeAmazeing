@@ -72,5 +72,5 @@ class CollisionChecker {
 
 }
 
-let beeCanvasElement = document.getElementById('game');
-const cc = new CollisionChecker(beeCanvasElement);
+let gameCanvasElement = document.getElementById('game');
+const cc = new CollisionChecker(this.canvas);
