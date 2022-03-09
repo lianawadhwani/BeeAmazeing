@@ -1,33 +1,31 @@
-h1{
+h1 {
   color: orange;
   text-align: center;
 }
 
-canvas{
+canvas {
   border: 2px dotted black;
 }
 
-.maze1 img{
-position: absolute;
-top: 200px;
-left: 500px;
-
+.maze1 img {
+  position: absolute;
+  top: 200px;
+  left: 500px;
 }
 
-#bee{
+#bee2 {
   position: relative;
   cursor: pointer;
 }
 
-#postest{
+#postest {
   position: absolute;
   top: 345px;
   left: 55px;
   height: 5px;
-width: 5px;
+  width: 5px;
 }
 
-#instruction{
+#instruction {
   background-color: yellow;
-
 }

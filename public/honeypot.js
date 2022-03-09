@@ -1,66 +1,78 @@
-var ctx = document.getElementById('honeypot').getContext('2d');
+//var ctx = document.getElementById('honeypot').getContext('2d');
 
-class Honeypot{
-  let onScreenTime;
-  let posX;
-  let posY;
-  let potNumber;
-  let visible = false;
+class Honeypot {
+  //let potNumber;
 
-
-  let honeypot = document.getElementById('honeypot');
-
-  function setOnScreenTime(){
-    onScreenTime = Math.floor(Math.random() * 20) + 5;
-  }
-
-  function getOnScreenTime(){
-    return onScreenTime;
-  }
-
-  function setPosX(){
-    posX = x;
-  }
-
-  function getPosX(){
-    return posX;
-  }
-  function setPosY(y){
-    posY = y;
-  }
-
-  function getPosX(){
-    return posY;
-  }
-
-
-  function collect(gameTimer){
-    //change style of honeypot element to be invisible
-    gameTimer += 5;
-  }
-//got rid of the dissapear method
-
-  function runPotTime() {
-    Stopwatch watch = new Stopwatch();
-    setOnScreenTime();
+  constructor(posX, posY) {
+    this.posX = posX;
+    this.posY = posY;
+    this.onScreenTime = 0;
     this.visible = true;
-    //change css of honeypot to be visible
-    watch.start();
-    watch.stopAt(this.getOnScreenTime());
-    this.visible = false;
-    //this should be called right after a honeypot is drawn
-
+    this.gameCanvas = document.getElementById("game");
+    this.gameCtx = this.gameCanvas.getContext("2d");
+    this.potImg = new Image();
+    this.potImg.src = "honeypot.png";
 
   }
 
+  //  let honeypot = document.getElementById('honeypot');
+
+  randOnScreenTime() {
+    let randTime = Math.floor(Math.random() * 20) + 5;
+    this.onScreenTime = randTime;
+  }
+  setOnScreenTime(time){
+    this.onScreenTime = time;
+  }
+
+  getOnScreenTime() {
+    return this.onScreenTime;
+  }
+
+  setPosX(x) {
+    this.posX = x;
+  }
+
+  getPosX() {
+    return this.posX;
+  }
+  setPosY(y) {
+    this.posY = y;
+  }
+
+  getPosY() {
+    return this.posY;
+  }
+
+  setVisible(bool) {
+    this.visible = bool;
+  }
+
+  getVisible() {
+    return this.visible;
+  }
+
+
+  collect(gameTimer) {
+    //call if pot is touched
+    gameTimer += 5;
+    this.visible = false;
+  }
+
+  drawPot() {
+    console.log("RUNPOTRUNPOT");
+    if(this.visible){
+      this.gameCtx.drawImage(this.potImg, this.posX, this.posY, 50,50);
+    }
+  }
+
+
+
 }
 
-//draw honeypot
 
-let img = document.getElementById("idname");
-ctx.drawImage("img of honeypot change later", posX, posY);
-this.runPotTime();
+//const checker = new CollisionChecker(gameCanvasElement);
 
-while (this.visible = false){
-  //change css of honeypot
-}
+//var img = document.createElement("honeypot.png");
+//img.setAttribute(id,‘honeypot’);
+//this.runPotTime();

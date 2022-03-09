@@ -1,8 +1,10 @@
+
+const bee2= document.getElementById('bee2');
 var size;
 var speed;
 var direction = 0;
 var posX = bee.style.left;
-var PosY = bee.style.top;
+var posY = bee.style.top;
 var xinit = 50;
 var yinit = 50;
 var x = xinit;
@@ -15,63 +17,53 @@ function changeDirection(direction) {
   this.direction = direction;
 }
 
-//arrow key html listener
+
 this.onkeydown = function (event) {
     switch (event.keyCode) {
        case 37:
-          console.log("Left key is pressed.");
           changeDirection(2);
           break;
        case 38:
-          console.log("Up key is pressed.");
           changeDirection(1);
           break;
        case 39:
-          console.log("Right key is pressed.");
           changeDirection(0);
           break;
        case 40:
-          console.log("Down key is pressed.");
           changeDirection(3);
           break;
     }
  };
 
-bee.onclick = function() {//function starts when bee icon is clicked
+bee2.onclick = function() {//function starts when bee icon is clicked
     toMove = setInterval(function() {
-      var rect = bee.getBoundingClientRect();
-      console.log(rect.left, rect.top);
-      if(cc.checkPixelType(rect.left, rect.top) == "wall")
-      {
-        console.log("COLLISION! at "+rect.left+", "+rect.top);
-      }
-      else {
-          //console.log("position:"+rect.left+", "+rect.top);
-      }
-      //console.log("position:"+rect.left+", "+rect.top);
 
       if(this.direction==0)
       {
        x++;
-       bee.style.left = x + 'px';
-       //console.log(bee.style.left);
+       x++;
+       bee2.style.left = x + 'px';
+       // console.log(bee.style.left);
       }
       if(this.direction==2)
       {
       x--;
-      bee.style.left = x + 'px';
+      x--;
+      bee2.style.left = x + 'px';
 
       }
       if(this.direction==1)
       {
         y--;
-        bee.style.top = y + 'px';
+        y--;
+        bee2.style.top = y + 'px';
 
       }
       if(this.direction==3)
       {
         y++;
-        bee.style.top = y + 'px';
+        y++;
+        bee2.style.top = y + 'px';
 
       }
 
@@ -81,8 +73,14 @@ bee.onclick = function() {//function starts when bee icon is clicked
     }, 20);
   }
 
+function resetBeeToStart ()
+{
+  clearInterval(toMove);
+  bee2.style.left = xinit + 'px';
+  bee2.style.top = yinit + 'px';
 
-  //henlohiii
+}
+
 
   function checkHitWall ()
   {
