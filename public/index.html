@@ -3,35 +3,35 @@
 <head>
   <link rel="stylesheet" type="text/css" href="style3.css">
   <title> BeeAmazeing Game </title>
-  <h1> BeeAmazing Game </h1>
 </head>
 
 <body>
+  <canvas id="game" style="margin-top:24px;" width=400px height=400px></canvas>
+  <h1> BeeAmazing Game </h1>
 
-  <p id="instruction"> Instructions: Welcome to the BeeAmazeing Game! To start the game press the start button. The bee will automatically start moving at a constant speed. If you wish to move the bee, press the up, down, left, and right keys. You must get to the flower at the end of the maze before the timer runs out. If you run into a wall or a human you will instantly die, and you will have to restart the level. Starting at level 2, honey pots will appear on your screen at a random time. If you run into a honey pot, your time increase by 5 seconds </p>
-  <canvas id="game" width=400px height=400px></canvas>
+  <p id="instruction"> Instructions: Welcome to the BeeAmazeing Game! To start the game press the start button. The bee will automatically start moving at a constant speed. If you wish to move the bee, press the up, down, left, and right keys. You
+    must get to the flower at the end of the maze before the timer runs out. If you run into a wall or a human you will instantly die, and you will have to restart the level. Starting at level 2, honey pots will appear on your screen at a random
+    time. If you run into a honey pot, your time increase by 5 seconds </p>
   <button id="postest"></button>
   <!--   <script type="module" src="./bee.js"></script> -->
 
 
   <div class=maze1>
     <img id="img" src="maze1black.jpeg" style="display: none;" stylealt="level1" width="200px" height="200px">
-      <img id="flower" src="flower.png" style="display: none;" stylealt="level1" width="200px" height="200px">
+    <img id="flower" src="flower.png" style="display: none;" stylealt="level1" width="200px" height="200px">
   </div>
 
 
   <img id="bee" src="bee.jpeg" alt="bee" width="50px" height="50px">
 
 
-<div class= "buttons">
-  <button id="start"> startButton </button>
-  <button id="restart"> restartButton </button>
-  <button id="nextLevel"> nextLevel </button
-
-</div>
-  <script src="collisionChecker.js"></script>
-  <script src="bee.js"></script>
-  <script src="main.js"></script>
+  <div class="buttons">
+    <button id="start"> startButton </button>
+    <button id="restart"> restartButton </button>
+    <button id="nextLevel"> nextLevel </button </div>
+    <script src="collisionChecker.js"></script>
+    <script src="bee.js"></script>
+    <script src="main.js"></script>
 
 
 </body>
