@@ -1,6 +1,6 @@
 class CollisionChecker {
   constructor(canvasElement) {
-  this.canvas = beeCanvasElement;
+  this.canvas = canvasElement;
 
       // set this to true to test everything
       this._test = false;
