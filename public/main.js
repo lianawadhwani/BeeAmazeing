@@ -23,7 +23,7 @@ test.setVisible(true);
 
 
 document.addEventListener('keydown',(event)=>{
-  console.log(event.keyCode)
+  //console.log(event.keyCode)
     switch (event.keyCode) {
        case 37:
           bee1.changeDirection(2);
@@ -53,6 +53,8 @@ function draw() {
   bee1.update();
   bee1.draw(ctx);
 
+
+  /*
   if (watch.state == "running" && watch.value != 100) {
     //could possibly change if statement to rely on honeypots visible variable
     test.drawPot();
@@ -63,7 +65,7 @@ function draw() {
     console.log("pot is off screen");
     test.setVisible(false);
   }
-
+  */
 
 
   window.requestAnimationFrame(draw);
