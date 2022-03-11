@@ -65,7 +65,7 @@ class Honeypot {
   {
     if(this.visible==false)
       return;
-      
+
     if(this.bee.x+this.bee.size/2>=this.posX&&this.bee.x+this.bee.size/2<=this.posX+50&&
     this.bee.y+this.bee.size/2>=this.posY&&this.bee.y+this.bee.size/2<=this.posY+50)
     {

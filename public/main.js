@@ -16,6 +16,8 @@ var bee1 = new Bee();
 var pot = new Honeypot(170, 150,bee1);
 pot.setOnScreenTime(30);
 
+let level =new Levels();
+level.changeLevel(5);
 
 
 document.addEventListener('keydown',(event)=>{
@@ -45,8 +47,10 @@ function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   var myImg = document.getElementById("img");
   //ctx.drawImage(bee,30, 150, 50, 50)
-  ctx.drawImage(myImg, 0, 0, 390, 390);
+  /*ctx.drawImage(myImg, 0, 0, 390, 390);*/
   ctx.drawImage(image, 350, 150, 50, 50);
+
+  level.draw(ctx);
 
   pot.update();
   pot.draw(ctx);
