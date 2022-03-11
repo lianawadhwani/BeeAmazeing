@@ -8,6 +8,7 @@ var ctx = canvas.getContext("2d");
 
 
 var bee1 = new Bee();
+var timer = new Timer(0,30);
 
 
 //var bee1 = document.getElementById('bee');
@@ -37,8 +38,28 @@ document.addEventListener('keydown',(event)=>{
 });
 document.getElementById("start").addEventListener("click", (event)=>{
   bee1.start();
+  console.log("starting timer");
+  timer.start();
 });
 
+
+document.getElementById("restart").addEventListener("click", (event)=>{
+  bee1.resetBeeToStart();
+  console.log("resetting timer");
+  timer.reset();
+});
+
+function formatTime(num){
+  let newNum = num/1000;
+
+  if(num % 1000 == 0){
+    return newNum + ".0";
+  }
+
+  return newNum;
+
+
+}
 
 function draw() {
 
@@ -48,12 +69,19 @@ function draw() {
   ctx.drawImage(myImg, 0, 0, 390, 390);
   ctx.drawImage(image, 350, 150, 50, 50);
 
-  pot.update();
+  pot.update(timer);
   pot.draw(ctx);
 
+  if(timer.value > 0){
+    bee1.update();
+  }
 
-  bee1.update();
+
   bee1.draw(ctx);
+
+  console.log(timer.value);
+  document.getElementById("timer").innerHTML = "Time Left: " + formatTime(timer.value) + " seconds";
+
 
 
   window.requestAnimationFrame(draw);
