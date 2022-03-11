@@ -13,13 +13,9 @@ var bee1 = new Bee();
 //var bee1 = document.getElementById('bee');
 //var bee2 = document.getElementById('bee2');
 
-var test = new Honeypot(200, 200);
-test.setOnScreenTime(5); //put in seconds for stopwatch
+var pot = new Honeypot(170, 150,bee1);
+pot.setOnScreenTime(30);
 
-
-let watch = new Timer(0, test.getOnScreenTime());
-watch.start();
-test.setVisible(true);
 
 
 document.addEventListener('keydown',(event)=>{
@@ -39,6 +35,9 @@ document.addEventListener('keydown',(event)=>{
           break;
     }
 });
+document.getElementById("start").addEventListener("click", (event)=>{
+  bee1.start();
+});
 
 
 function draw() {
@@ -49,23 +48,12 @@ function draw() {
   ctx.drawImage(myImg, 0, 0, 390, 390);
   ctx.drawImage(image, 350, 150, 50, 50);
 
+  pot.update();
+  pot.draw(ctx);
+
 
   bee1.update();
   bee1.draw(ctx);
-
-
-  /*
-  if (watch.state == "running" && watch.value != 100) {
-    //could possibly change if statement to rely on honeypots visible variable
-    test.drawPot();
-    console.log("pot is on screen");
-
-    //console.log(test.getVisible());
-  } else {
-    console.log("pot is off screen");
-    test.setVisible(false);
-  }
-  */
 
 
   window.requestAnimationFrame(draw);

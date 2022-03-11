@@ -2,8 +2,8 @@ import CollisionChecker from '/public/collisionChecker.js'
 export default class Bee{
   constructor(){
     this.size = 50;
-    this.direction = 0;
-    this.xinit=50;
+    this.direction = -1;//-1 means not moving
+    this.xinit=10;
     this.yinit=160;
     this.gameWidth = 400;
     this.gameHeight = 400;
@@ -13,6 +13,7 @@ export default class Bee{
     this.cc = new CollisionChecker(this.beeCanvasElement);
     this.beeImage = new Image();
     this.beeImage.src = "/public/bee2.png";
+    this.started = false;
   }
   changeDirection(direction) {
     this.direction = direction;
@@ -21,10 +22,16 @@ export default class Bee{
   {
     ctx.drawImage(this.beeImage,this.x,this.y,50,50);
   }
+  start()
+  {
+    this.started=true;
+  }
   resetBeeToStart()
   {
     this.x = this.xinit;
     this.y = this.yinit;
+    this.started = false;
+    this.direction = -1;
   }
   update()
   {
@@ -34,11 +41,18 @@ export default class Bee{
     }
 
     //console.log(rect.left, rect.top);
-    if(this.cc.checkPixelType(this.x+this.size/2,this.y+this.size/2) == "wall")
+    if(!this.started)
     {
-      console.log("COLLISION! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
-      this.resetBeeToStart();
+      this.direction=-1;
+      return;
     }
+    switch (this.cc.checkPixelType(this.x+this.size/2,this.y+this.size/2)){
+      case "wall":
+        console.log("HIT WALL! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
+        this.resetBeeToStart();
+        break;
+    }
+
     if(this.direction==0)
     {
       this.x+=2;

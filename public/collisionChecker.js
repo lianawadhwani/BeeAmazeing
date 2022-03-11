@@ -12,7 +12,8 @@ export default class CollisionChecker {
 
       this.typeOfGameElement = {
         nothing : "nothing",
-        wall : "wall"
+        wall : "wall",
+        honeypot : "honeypot"
       }
   }
 
@@ -40,6 +41,10 @@ export default class CollisionChecker {
       if (this.isWall(pixelData)) {
         return this.typeOfGameElement.wall;
       }
+      /*
+      if (this.isHoneypot(pixelData)) {
+        return this.typeOfGameElement.honeypot;
+      }*/
     }
   }
 
@@ -54,7 +59,14 @@ export default class CollisionChecker {
     }
     return false;
   }
-
+  /*Doesn't work so added a checker in honeypot instead
+  isHoneypot(pixelData) {
+    if (pixelData[0] == '253' && pixelData[1] == '126' && pixelData[2] == '8') {
+      console.log('hitting honeypot');
+      return true;
+    }
+    return false;
+  }*/
 
   // This is only used for testing, can be deleted...
   // This draws a gradient and shows the RGB values at any given pixel
