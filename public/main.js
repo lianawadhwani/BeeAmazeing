@@ -38,6 +38,7 @@ document.addEventListener('keydown',(event)=>{
 });
 document.getElementById("start").addEventListener("click", (event)=>{
   bee1.start();
+  pot.watch.start();
   console.log("starting timer");
   timer.start();
 });
@@ -47,6 +48,7 @@ document.getElementById("restart").addEventListener("click", (event)=>{
   bee1.resetBeeToStart();
   console.log("resetting timer");
   timer.reset();
+  pot.watch.reset();
 });
 
 function formatTime(num){

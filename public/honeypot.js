@@ -24,7 +24,6 @@ class Honeypot {
   setOnScreenTime(time){
     this.onScreenTime = time;
     this.watch = new Timer(0, this.onScreenTime);
-    this.watch.start();
     this.setVisible(true);
   }
 
@@ -64,6 +63,9 @@ class Honeypot {
   }
   update(timer)
   {
+    if(this.watch.value>0)
+      this.visible = true;
+      
     if(this.visible==false)
       return;
 
