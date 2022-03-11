@@ -1,12 +1,14 @@
-class CollisionChecker {
+export default class CollisionChecker {
+
   constructor(canvasElement) {
   this.canvas = canvasElement;
 
       // set this to true to test everything
+      /*
       this._test = false;
       if (this._test) {
         this._test_logMouseMovement();
-      }
+      }*/
 
       this.typeOfGameElement = {
         nothing : "nothing",
@@ -28,9 +30,9 @@ class CollisionChecker {
     var pixelData = this.canvas.getContext('2d').getImageData(pixelX, pixelY, 1, 1).data;
 
     // If (this.test) is set to TRUE (in the constructor), log details
-    if (this._test) {
-      this._test_logTestData(pixelData);
-    }
+    //if (this._test) {
+      //this._test_logTestData(pixelData);
+    //}
 
 
     if (pixelData) {
@@ -44,7 +46,10 @@ class CollisionChecker {
   // Checks if its a wall (assumed RGB values are 255,255,255)
   isWall(pixelData) {
     if (pixelData[0] == '0' && pixelData[1] == '0' && pixelData[2] == '0' && pixelData[3] == '255') {
-      console.log('hitting wall');
+      console.log('R: ' + pixelData[0]);
+      console.log('G: ' + pixelData[1]);
+      console.log('B: ' + pixelData[2]);
+      console.log('A: ' + pixelData[3]);
       return true;
     }
     return false;
@@ -71,6 +76,3 @@ class CollisionChecker {
   }
 
 }
-
-let gameCanvasElement = document.getElementById('game');
-const cc = new CollisionChecker(this.canvas);
