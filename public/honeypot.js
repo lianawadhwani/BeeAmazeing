@@ -24,7 +24,6 @@ class Honeypot {
   setOnScreenTime(time){
     this.onScreenTime = time;
     this.watch = new Timer(0, this.onScreenTime);
-    this.watch.start();
     this.setVisible(true);
   }
 
@@ -58,18 +57,22 @@ class Honeypot {
 
   collect(gameTimer) {
     //call if pot is touched
-    gameTimer += 5;
+    gameTimer.value += 5000;
+
     this.visible = false;
   }
-  update()
+  update(timer)
   {
+    if(this.watch.value>0)
+      this.visible = true;
+      
     if(this.visible==false)
       return;
 
     if(this.bee.x+this.bee.size/2>=this.posX&&this.bee.x+this.bee.size/2<=this.posX+50&&
     this.bee.y+this.bee.size/2>=this.posY&&this.bee.y+this.bee.size/2<=this.posY+50)
     {
-      this.collect();
+      this.collect(timer);
       console.log("Honeypot! at "+(this.bee.x+this.bee.size/2)+", "+(this.bee.y+this.bee.size/2));
     }
     if(this.watch.value<=0)
