@@ -1,3 +1,4 @@
+import CollisionChecker from '/public/collisionChecker.js'
 export default class Bee{
   constructor(){
     this.size = 50;
@@ -8,6 +9,8 @@ export default class Bee{
     this.gameHeight = 400;
     this.x=this.xinit;
     this.y=this.yinit;
+    this.beeCanvasElement = document.getElementById('game');
+    this.cc = new CollisionChecker(this.beeCanvasElement);
     this.beeImage = new Image();
     this.beeImage.src = "/public/bee2.png";
   }
@@ -27,6 +30,13 @@ export default class Bee{
   {
     if(this.x+this.size<0||this.y+this.size<0||this.x>=this.gameWidth||this.y>=this.gameWidth)
     {
+      this.resetBeeToStart();
+    }
+
+    //console.log(rect.left, rect.top);
+    if(this.cc.checkPixelType(this.x+this.size/2,this.y+this.size/2) == "wall")
+    {
+      console.log("COLLISION! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
       this.resetBeeToStart();
     }
     if(this.direction==0)
