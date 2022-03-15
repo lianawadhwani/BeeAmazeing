@@ -21,7 +21,7 @@ var pot = new Honeypot(170, 150,bee1);
 pot.setOnScreenTime(30);
 
 let level =new Levels();
-level.changeLevel(2);
+level.changeLevel(1);
 
 
 document.addEventListener('keydown',(event)=>{
@@ -94,7 +94,7 @@ function draw() {
 
   bee1.draw(ctx);
 
-  console.log(timer.value);
+  //console.log(timer.value);
   document.getElementById("timer").innerHTML = "Time Left: " + formatTime(timer.value) + " seconds";
 
 

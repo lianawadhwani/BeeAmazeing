@@ -5,15 +5,18 @@ export default class CollisionChecker {
 
       // set this to true to test everything
       /*
-      this._test = false;
+      this._test = true;
       if (this._test) {
         this._test_logMouseMovement();
-      }*/
+      }
+      */
+
 
       this.typeOfGameElement = {
         nothing : "nothing",
         wall : "wall",
-        honeypot : "honeypot"
+        honeypot : "honeypot",
+        enemy : "enemy"
       }
   }
 
@@ -31,15 +34,20 @@ export default class CollisionChecker {
     var pixelData = this.canvas.getContext('2d').getImageData(pixelX, pixelY, 1, 1).data;
 
     // If (this.test) is set to TRUE (in the constructor), log details
-    //if (this._test) {
-      //this._test_logTestData(pixelData);
-    //}
+    /*
+    if (this._test) {
+      this._test_logTestData(pixelData);
+    }
+    */
 
 
     if (pixelData) {
       // Check if wall
       if (this.isWall(pixelData)) {
         return this.typeOfGameElement.wall;
+      }
+      if (this.isEnemy(pixelData)) {
+        return this.typeOfGameElement.enemy;
       }
       /*
       if (this.isHoneypot(pixelData)) {
@@ -51,6 +59,18 @@ export default class CollisionChecker {
   // Checks if its a wall (assumed RGB values are 255,255,255)
   isWall(pixelData) {
     if (pixelData[0] == '0' && pixelData[1] == '0' && pixelData[2] == '0' && pixelData[3] == '255') {
+      console.log('R: ' + pixelData[0]);
+      console.log('G: ' + pixelData[1]);
+      console.log('B: ' + pixelData[2]);
+      console.log('A: ' + pixelData[3]);
+      return true;
+    }
+    return false;
+  }
+  // Checks if it is an enemy
+  isEnemy(pixelData) {
+    //if (pixelData[0] == '34' && pixelData[1] == '58' && pixelData[2] == '19' || (pixelData[0] == '41' && pixelData[1] == '61' && pixelData[2] == '13') {
+    if (pixelData[0] == '194' && pixelData[1] == '202' && pixelData[2] == '184' && pixelData[3] == '255') {
       console.log('R: ' + pixelData[0]);
       console.log('G: ' + pixelData[1]);
       console.log('B: ' + pixelData[2]);

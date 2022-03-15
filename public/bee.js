@@ -51,6 +51,10 @@ export default class Bee{
         console.log("HIT WALL! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
         this.resetBeeToStart();
         break;
+      case "enemy":
+        console.log("HIT ENEMY! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
+        this.resetBeeToStart();
+        break;
     }
 
     if(this.direction==0)

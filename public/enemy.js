@@ -26,6 +26,7 @@ export default class Enemy{
   {
     this.x = this.xinit;
     this.y = this.yinit;
+    this.started=false;
     this.direction = -1;
   }
   update()
