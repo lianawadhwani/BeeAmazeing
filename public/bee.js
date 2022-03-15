@@ -30,7 +30,6 @@ export default class Bee{
   {
     this.x = this.xinit;
     this.y = this.yinit;
-    this.started = false;
     this.direction = -1;
   }
   winCheck()
