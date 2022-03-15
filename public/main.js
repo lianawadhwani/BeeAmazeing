@@ -7,20 +7,23 @@ image.src = 'flower.png';
 var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
 
-var enemy0 = new Enemy(50,300,270,"up");
-var enemy1 = new Enemy(240,100,200,"down");
 
 var bee1 = new Bee();
 var timer = new Timer(0,30);
 
+
+var enemy0 = new Enemy(50,300,270,"up",bee1);
+var enemy1 = new Enemy(240,100,200,"down",bee1);
 
 //var bee1 = document.getElementById('bee');
 //var bee2 = document.getElementById('bee2');
 
 var pot = new Honeypot(170, 150,bee1);
 pot.setOnScreenTime(30);
+pot.reset();
 
 let level =new Levels();
+let levelnum = 1;
 level.changeLevel(1);
 
 
@@ -55,7 +58,7 @@ document.getElementById("restart").addEventListener("click", (event)=>{
   bee1.resetBeeToStart();
   console.log("resetting timer");
   timer.reset();
-  pot.watch.reset();
+  pot.reset();
 });
 
 function formatTime(num){
@@ -89,6 +92,14 @@ function draw() {
   enemy1.draw(ctx);
   if(timer.value > 0){
     bee1.update();
+  }
+  if(bee1.winCheck())
+  {
+    levelnum++;
+    level.changeLevel(levelnum);
+    pot.reset();
+    timer.reset();
+    timer.start();
   }
 
 

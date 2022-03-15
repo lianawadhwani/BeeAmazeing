@@ -1,5 +1,5 @@
 export default class Enemy{
-  constructor(xinit, yinit, range, direction){
+  constructor(xinit, yinit, range, direction, bee){
     this.started = false;
     this.counter = 0;
     this.size = 50;
@@ -12,6 +12,7 @@ export default class Enemy{
     this.y=this.yinit;
     this.enemyImage = new Image();
     this.enemyImage.src = "/public/enemySprite.png";
+    this.bee = bee;
   }
   draw(ctx)
   {
@@ -33,7 +34,11 @@ export default class Enemy{
   {
 
 
-
+    if(this.bee.x+this.bee.size/2>=this.x&&this.bee.x+this.bee.size/2<=this.x+this.size&&this.bee.y+this.bee.size/2>=this.y&&this.bee.y+this.bee.size/2<=this.y+this.size)
+    {
+      console.log("HIT ENEMY! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
+      this.bee.resetBeeToStart();
+    }
     //console.log(rect.left, rect.top);
     if(!this.started)
     {

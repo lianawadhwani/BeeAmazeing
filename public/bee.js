@@ -33,6 +33,14 @@ export default class Bee{
     this.started = false;
     this.direction = -1;
   }
+  winCheck()
+  {
+    if(this.x>=350&&this.x+this.size<=400&&this.y>=150&&this.y<=200)
+    {
+      this.resetBeeToStart();
+      return true;
+    }
+  }
   update()
   {
     if(this.x+this.size<0||this.y+this.size<0||this.x>=this.gameWidth||this.y>=this.gameWidth)
@@ -49,10 +57,6 @@ export default class Bee{
     switch (this.cc.checkPixelType(this.x+this.size/2,this.y+this.size/2)){
       case "wall":
         console.log("HIT WALL! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
-        this.resetBeeToStart();
-        break;
-      case "enemy":
-        console.log("HIT ENEMY! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
         this.resetBeeToStart();
         break;
     }

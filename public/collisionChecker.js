@@ -16,7 +16,7 @@ export default class CollisionChecker {
         nothing : "nothing",
         wall : "wall",
         honeypot : "honeypot",
-        enemy : "enemy"
+        enemy : "enemy",
       }
   }
 
