@@ -1,4 +1,5 @@
 import Bee from '/public/bee.js'
+import Enemy from '/public/enemy.js'
 
 const image = new Image();
 image.src = 'flower.png';
@@ -6,6 +7,8 @@ image.src = 'flower.png';
 var canvas = document.getElementById("game");
 var ctx = canvas.getContext("2d");
 
+var enemy0 = new Enemy(50,300,270,"up");
+var enemy1 = new Enemy(240,100,200,"down");
 
 var bee1 = new Bee();
 var timer = new Timer(0,30);
@@ -38,6 +41,8 @@ document.addEventListener('keydown',(event)=>{
 });
 document.getElementById("start").addEventListener("click", (event)=>{
   bee1.start();
+  enemy0.start();
+  enemy1.start();
   pot.watch.start();
   console.log("starting timer");
   timer.start();
@@ -74,6 +79,10 @@ function draw() {
   pot.update(timer);
   pot.draw(ctx);
 
+  enemy0.update();
+  enemy0.draw(ctx);
+  enemy1.update();
+  enemy1.draw(ctx);
   if(timer.value > 0){
     bee1.update();
   }
