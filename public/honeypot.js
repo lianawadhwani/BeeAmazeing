@@ -22,6 +22,12 @@ class Honeypot {
     let randTime = Math.floor(Math.random() * 20) + 5;
     setOnScreenTime(randTime);
   }
+  randPos(){
+    let randX = Math.floor(Math.random()*100)+100;
+    let randY = Math.floor(Math.random()*100)+100;
+    this.posX = randX;
+    this.posY = randY;
+  }
   setOnScreenTime(time){
     this.onScreenTime = time;
     this.watch = new Timer(0, this.onScreenTime);
@@ -55,7 +61,12 @@ class Honeypot {
     return this.visible;
   }
 
-
+  reset(){
+    this.visible = true;
+    this.collected = false;
+    this.watch.reset();
+    this.randPos();
+  }
   collect(gameTimer) {
     //call if pot is touched
     gameTimer.value += 5000;
