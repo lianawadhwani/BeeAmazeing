@@ -1,3 +1,7 @@
+body {
+  background-image: url('../public/beeAmazingBackground.png');
+}
+
 h1{
   color: orange;
   text-align: center;
