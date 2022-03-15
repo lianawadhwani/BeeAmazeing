@@ -7,6 +7,7 @@ class Honeypot {
     this.bee = bee;
     this.onScreenTime = 0;
     this.visible = true;;
+    this.collected =false;
     this.gameCanvas = document.getElementById("game");
     this.gameCtx = this.gameCanvas.getContext("2d");
     this.potImg = new Image();
@@ -60,12 +61,13 @@ class Honeypot {
     gameTimer.value += 5000;
 
     this.visible = false;
+    this.collected=true;
   }
   update(timer)
   {
-    if(this.watch.value>0)
+    if(this.watch.value>0&&this.collected==false)
       this.visible = true;
-      
+
     if(this.visible==false)
       return;
 
