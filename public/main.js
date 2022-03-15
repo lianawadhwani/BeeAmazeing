@@ -21,7 +21,7 @@ var pot = new Honeypot(170, 150,bee1);
 pot.setOnScreenTime(30);
 
 let level =new Levels();
-level.changeLevel(1);
+level.changeLevel(2);
 
 
 document.addEventListener('keydown',(event)=>{
