@@ -1,125 +1,79 @@
+import CollisionChecker from '/public/collisionChecker.js'
+export default class Bee{
+  constructor(){
+    this.size = 50;
+    this.direction = -1;//-1 means not moving
+    this.xinit=10;
+    this.yinit=160;
+    this.gameWidth = 400;
+    this.gameHeight = 400;
+    this.x=this.xinit;
+    this.y=this.yinit;
+    this.beeCanvasElement = document.getElementById('game');
+    this.cc = new CollisionChecker(this.beeCanvasElement);
+    this.beeImage = new Image();
+    this.beeImage.src = "/public/bee2.png";
+    this.started = false;
+  }
+  changeDirection(direction) {
+    this.direction = direction;
+  }
+  draw(ctx)
+  {
+    ctx.drawImage(this.beeImage,this.x,this.y,50,50);
+  }
+  start()
+  {
+    this.started=true;
+  }
+  resetBeeToStart()
+  {
+    this.x = this.xinit;
+    this.y = this.yinit;
+    this.started = false;
+    this.direction = -1;
+  }
+  update()
+  {
+    if(this.x+this.size<0||this.y+this.size<0||this.x>=this.gameWidth||this.y>=this.gameWidth)
+    {
+      this.resetBeeToStart();
+    }
 
-const bee2= document.getElementById('bee2');
-var size;
-var speed;
-var direction = 0;
-var posX = bee.style.left;
-var posY = bee.style.top;
-var xinit = 50;
-var yinit = 50;
-var x = xinit;
-var y = yinit;
-var toMove;
+    //console.log(rect.left, rect.top);
+    if(!this.started)
+    {
+      this.direction=-1;
+      return;
+    }
+    switch (this.cc.checkPixelType(this.x+this.size/2,this.y+this.size/2)){
+      case "wall":
+        console.log("HIT WALL! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
+        this.resetBeeToStart();
+        break;
+      case "enemy":
+        console.log("HIT ENEMY! at "+(this.x+this.size/2)+", "+(this.y+this.size/2));
+        this.resetBeeToStart();
+        break;
+    }
 
-function changeDirection(direction) {
-  this.direction = direction;
+    if(this.direction==0)
+    {
+      this.x+=2;
+     // console.log(bee.style.left);
+    }
+    if(this.direction==2)
+    {
+      this.x-=2;
+    }
+    if(this.direction==1)
+    {
+      this.y-=2;
+
+    }
+    if(this.direction==3)
+    {
+      this.y+=2;
+    }
+  }
 }
-
-
-this.onkeydown = function (event) {
-    switch (event.keyCode) {
-       case 37:
-          changeDirection(2);
-          break;
-       case 38:
-          changeDirection(1);
-          break;
-       case 39:
-          changeDirection(0);
-          break;
-       case 40:
-          changeDirection(3);
-          break;
-    }
- };
-
-bee2.onclick = function() {//function starts when bee icon is clicked
-    toMove = setInterval(function() {
-
-      if(this.direction==0)
-      {
-       x++;
-       x++;
-       bee2.style.left = x + 'px';
-       // console.log(bee.style.left);
-      }
-      if(this.direction==2)
-      {
-      x--;
-      x--;
-      bee2.style.left = x + 'px';
-
-      }
-      if(this.direction==1)
-      {
-        y--;
-        y--;
-        bee2.style.top = y + 'px';
-
-      }
-      if(this.direction==3)
-      {
-        y++;
-        y++;
-        bee2.style.top = y + 'px';
-
-      }
-
-      // console.log(bee.style.top);
-
-
-    }, 20);
-  }
-
-function resetBeeToStart ()
-{
-  clearInterval(toMove);
-  bee2.style.left = xinit + 'px';
-  bee2.style.top = yinit + 'px';
-
-}
-
-
-  function checkHitWall ()
-  {
-    if(hitWall())//method not yet made-- some additions needed to cc class (use pixel type to make functions check hit wall, hit pot, etc.)
-    {
-      Game.decreaseTime();//these objects to be instantiated in game class
-    }
-
-  }
-
-  function checkHitPot ()
-  {
-    if(hitPot())//method not yet made
-    {
-      HoneyPot.collect(hitPot());//these objects to be instantiated in game class
-    }
-  }
-
-  function checkHitEnemy()//method not yet made
-  {
-    if(hitEnemy())
-    {
-      Bee.die()//these objects to be instantiated in game class
-    }
-  }
-
-  function die()
-  {
-    Game.gameOver();//method not yet made
-  }
-
-  function checkHitGoal()//methods not yet made/testable
-  {
-    if (posX == Goal.posX && posY == Goal.posY);
-    {
-      if (Game.currentLevel <= 4)
-      {
-        Game.nextLevel();
-      }
-      else {
-        Game.win();
-      }
-    }
-  }

@@ -1,16 +1,22 @@
-class CollisionChecker {
+export default class CollisionChecker {
+
   constructor(canvasElement) {
-  this.canvas = beeCanvasElement;
+  this.canvas = canvasElement;
 
       // set this to true to test everything
-      this._test = false;
+      /*
+      this._test = true;
       if (this._test) {
         this._test_logMouseMovement();
       }
+      */
+
 
       this.typeOfGameElement = {
         nothing : "nothing",
-        wall : "wall"
+        wall : "wall",
+        honeypot : "honeypot",
+        enemy : "enemy"
       }
   }
 
@@ -28,9 +34,11 @@ class CollisionChecker {
     var pixelData = this.canvas.getContext('2d').getImageData(pixelX, pixelY, 1, 1).data;
 
     // If (this.test) is set to TRUE (in the constructor), log details
+    /*
     if (this._test) {
       this._test_logTestData(pixelData);
     }
+    */
 
 
     if (pixelData) {
@@ -38,18 +46,47 @@ class CollisionChecker {
       if (this.isWall(pixelData)) {
         return this.typeOfGameElement.wall;
       }
+      if (this.isEnemy(pixelData)) {
+        return this.typeOfGameElement.enemy;
+      }
+      /*
+      if (this.isHoneypot(pixelData)) {
+        return this.typeOfGameElement.honeypot;
+      }*/
     }
   }
 
   // Checks if its a wall (assumed RGB values are 255,255,255)
   isWall(pixelData) {
     if (pixelData[0] == '0' && pixelData[1] == '0' && pixelData[2] == '0' && pixelData[3] == '255') {
-      console.log('hitting wall');
+      console.log('R: ' + pixelData[0]);
+      console.log('G: ' + pixelData[1]);
+      console.log('B: ' + pixelData[2]);
+      console.log('A: ' + pixelData[3]);
       return true;
     }
     return false;
   }
-
+  // Checks if it is an enemy
+  isEnemy(pixelData) {
+    //if (pixelData[0] == '34' && pixelData[1] == '58' && pixelData[2] == '19' || (pixelData[0] == '41' && pixelData[1] == '61' && pixelData[2] == '13') {
+    if (pixelData[0] == '194' && pixelData[1] == '202' && pixelData[2] == '184' && pixelData[3] == '255') {
+      console.log('R: ' + pixelData[0]);
+      console.log('G: ' + pixelData[1]);
+      console.log('B: ' + pixelData[2]);
+      console.log('A: ' + pixelData[3]);
+      return true;
+    }
+    return false;
+  }
+  /*Doesn't work so added a checker in honeypot instead
+  isHoneypot(pixelData) {
+    if (pixelData[0] == '253' && pixelData[1] == '126' && pixelData[2] == '8') {
+      console.log('hitting honeypot');
+      return true;
+    }
+    return false;
+  }*/
 
   // This is only used for testing, can be deleted...
   // This draws a gradient and shows the RGB values at any given pixel
@@ -71,6 +108,3 @@ class CollisionChecker {
   }
 
 }
-
-let gameCanvasElement = document.getElementById('game');
-const cc = new CollisionChecker(this.canvas);
