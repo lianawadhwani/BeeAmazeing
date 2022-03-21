@@ -1,15 +1,22 @@
 body {
   //background-image: url('../public/beeAmazingBackground.png');
+
 }
 
 h1{
   color: orange;
   text-align: center;
+
+  border-radius: 15px;
+  height: 50;
+
 }
 
 canvas{
   border: 2px dotted black;
 }
+
+
 
 .maze1 img{
 position: absolute;
@@ -24,6 +31,10 @@ left: 500px;
 }
 
 #instruction{
-  background-color: yellow;
+  background-color: Moccasin;
+  border-radius: 10px;
+  padding: 20;
+  text-align: center;
+
 
 }

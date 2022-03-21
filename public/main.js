@@ -22,9 +22,13 @@ var pot = new Honeypot(170, 150,bee1);
 pot.setOnScreenTime(30);
 pot.reset();
 
+//need to make multiuple pots?? var potArray = [pot, n]
+
 let level =new Levels();
 let levelnum = 1;
 level.changeLevel(1);
+
+if(level.currentLevel)
 
 
 document.addEventListener('keydown',(event)=>{
